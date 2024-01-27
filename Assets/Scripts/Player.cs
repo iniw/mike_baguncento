@@ -66,9 +66,9 @@ public class Player : MonoBehaviour
         {
             newPosition.x = -_boundWidth;
         }
-
+        
         newPosition.x = Math.Clamp(newPosition.x, carBoundsMin.x, carBoundsMax.x);
-
+        
         if (newPosition.y >= _boundHeight - _offsetH)
         {
             newPosition.y = _boundHeight - _offsetH;

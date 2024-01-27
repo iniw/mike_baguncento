@@ -83,7 +83,9 @@ public class Player : MonoBehaviour
 
         Debug.Log("Collided");
         if (GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
+        {
             SceneManager.LoadScene("GameOver");
+        }
         else
         {
             if (_moveHorizontal != 0)

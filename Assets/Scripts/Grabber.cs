@@ -89,19 +89,19 @@ public class Grabber : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (_state != State.Idle || !collider.gameObject.CompareTag("Ball"))
-            return;
-
-        _state = State.BallInArea;
-        _ballInArea = collider.GetComponent<Rigidbody2D>();
+        if (_state == State.Idle && collider.gameObject.CompareTag("Ball"))
+        {
+            _state = State.BallInArea;
+            _ballInArea = collider.GetComponent<Rigidbody2D>();
+        }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (_state != State.BallInArea || !collider.gameObject.CompareTag("Ball"))
-            return;
-
-        _state = State.Idle;
-        _ballInArea = null;
+        if (_state == State.BallInArea && _ballInArea == collider)
+        {
+            _state = State.Idle;
+            _ballInArea = null;
+        }
     }
 }

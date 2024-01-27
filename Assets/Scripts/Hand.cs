@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum HandSide
 {
@@ -9,33 +11,22 @@ public enum HandSide
 public class Hand : MonoBehaviour
 {
     public HandSide side = HandSide.Left;
-    public float speed = 9.0f;
-    public float maxSpeed = 10.0f;
-    public float accelerationRate = 2.0f;
-    public float decelerationRate = 2.0f;
-    public float acceleration = MinSpeed;
-
+    public float speed = 2.0f;
+    
     private Transform _transform;
-    private const float MinSpeed = 5.0f;
     private DynamicInput _input;
 
     private float _moveHorizontal = 0.0f;
     private float _moveVertical = 0.0f;
 
-    private Camera _camera;
-    private float _screenWidth;
-    private float _screenHeight;
-    
-    private void Awake()
-    {
-        _camera = Camera.main;
-        _screenHeight = Screen.height;
-        _screenWidth = Screen.width;
-    }
+    private Vector3 _originalPos;
+    public float offset = 3.0f;
 
     private void Start()
     {
         _transform = GetComponent<Transform>();
+
+        _originalPos = new Vector3(_transform.position.x, _transform.position.y, _transform.position.z);
 
         _input = new DynamicInput();
         _input.Enable();
@@ -52,35 +43,19 @@ public class Hand : MonoBehaviour
     private void FixedUpdate()
     {
         var movement = new Vector3(_moveHorizontal, _moveVertical, 0.0f);
-
-        if (movement != Vector3.zero)
-        {
-            acceleration += accelerationRate * Time.deltaTime;
-            acceleration = Mathf.Min(acceleration, maxSpeed);
-        }
-        else
-        {
-            acceleration -= decelerationRate * Time.deltaTime;
-            acceleration = Mathf.Max(acceleration, MinSpeed);
-        }
-
-        var newPosition = _transform.position + movement * speed * acceleration * Time.deltaTime;
         
-        Vector3 minBounds, maxBounds;
-        if (side == HandSide.Left)
+        var newPosition = _transform.position + movement * speed * Time.deltaTime;
+
+        if (newPosition.x >= _originalPos.x + offset || newPosition.x <= _originalPos.x - offset)
         {
-            minBounds = _camera.ScreenToWorldPoint(new Vector3(0, 0, _camera.nearClipPlane));
-            maxBounds = _camera.ScreenToWorldPoint(new Vector3(_screenWidth / 2, _screenHeight / 2, _camera.farClipPlane));
-        }
-        else
-        {
-            minBounds = _camera.ScreenToWorldPoint(new Vector3(_screenWidth / 2, 0, _camera.nearClipPlane));
-            maxBounds = _camera.ScreenToWorldPoint(new Vector3(_screenWidth, _screenHeight / 2, _camera.farClipPlane));
+            newPosition.x = _transform.position.x;
         }
 
-        newPosition.x = Mathf.Clamp(newPosition.x, minBounds.x, maxBounds.x - 2);
-        newPosition.y = Mathf.Clamp(newPosition.y, minBounds.y, maxBounds.y);
-
+        if (newPosition.y >= _originalPos.y + offset || newPosition.y <= _originalPos.y - offset + 2)
+        {
+            newPosition.y = _transform.position.y;
+        }
+        
         _transform.position = newPosition;
     }
 }

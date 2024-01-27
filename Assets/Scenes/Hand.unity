@@ -333,6 +333,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 1193893085}
+--- !u!1 &332593241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332593243}
+  - component: {fileID: 332593242}
+  m_Layer: 0
+  m_Name: a
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &332593242
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332593241}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.4112468, y: 2.8359892}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.403962, y: 6.6719794}
+  m_EdgeRadius: 0
+--- !u!4 &332593243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332593241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.37, y: -8.08, z: -0.019590737}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518851784
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,11 +675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
-  speed: 2
-  maxSpeed: 10
-  accelerationRate: 2
-  decelerationRate: 2
-  acceleration: 0
+  speed: 7
+  offset: 3
 --- !u!50 &1193893086
 Rigidbody2D:
   serializedVersion: 4
@@ -736,7 +810,7 @@ Transform:
   m_GameObject: {fileID: 1193893084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.33356017, w: 0.9427288}
-  m_LocalPosition: {x: -14, y: -6, z: 0}
+  m_LocalPosition: {x: -10, y: -5.35, z: 0}
   m_LocalScale: {x: 4.44, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -776,11 +850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 1
-  speed: 2
-  maxSpeed: 10
-  accelerationRate: 2
-  decelerationRate: 2
-  acceleration: 0
+  speed: 7
+  offset: 3
 --- !u!50 &1799352128
 Rigidbody2D:
   serializedVersion: 4
@@ -914,7 +985,7 @@ Transform:
   m_GameObject: {fileID: 1799352126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.33356008, w: 0.9427289}
-  m_LocalPosition: {x: 14, y: -6, z: 0}
+  m_LocalPosition: {x: 10, y: -5.35, z: 0}
   m_LocalScale: {x: 4.44, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1060,3 +1131,4 @@ SceneRoots:
   - {fileID: 134831112}
   - {fileID: 518851785}
   - {fileID: 121728639}
+  - {fileID: 332593243}

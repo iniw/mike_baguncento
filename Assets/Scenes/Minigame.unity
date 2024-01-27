@@ -1666,7 +1666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: day
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: goal

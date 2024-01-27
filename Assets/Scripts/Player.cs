@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
 
-    private Transform _transform;
     private DynamicInput _input;
     private float _moveHorizontal = 0.0f;
     private float _moveVertical = 0.0f;
@@ -16,11 +15,14 @@ public class Player : MonoBehaviour
 
     private float _offsetW = 0.0f;
     private float _offsetH = 0.0f;
-    
+
+    private Rigidbody2D rb2d;
 
     private void Start()
     {
-        _transform = GetComponent<Transform>();
+
+        rb2d = GetComponent<Rigidbody2D>();
+
         var spriteRenderer = GetComponent<SpriteRenderer>();
 
         var spriteSize = spriteRenderer.sprite.bounds.size;
@@ -48,38 +50,36 @@ public class Player : MonoBehaviour
     {
         var movement = new Vector3(_moveHorizontal, _moveVertical, 0.0f);
 
-        var newPosition = _transform.position + movement * (speed * Time.deltaTime);
-        
-        var carBounds = GameObject.FindGameObjectWithTag("Cars").GetComponent<Collider2D>().bounds;
-
-        // if (carBounds.Contains(newPosition) && GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
-        //     SceneManager.LoadScene("GameOver");
-        
-        var carBoundsMin = carBounds.min;
-        var carBoundsMax = carBounds.max;
+        var newPosition = transform.position + movement * (speed * Time.deltaTime);
 
         if (newPosition.x >= _boundWidth - _offsetW)
-        {
             newPosition.x = _boundWidth - _offsetW;
-        }
         else if (newPosition.x <= -_boundWidth)
-        {
             newPosition.x = -_boundWidth;
-        }
-        
-        newPosition.x = Math.Clamp(newPosition.x, carBoundsMin.x, carBoundsMax.x);
-        
-        if (newPosition.y >= _boundHeight - _offsetH)
-        {
-            newPosition.y = _boundHeight - _offsetH;
-        }
-        else if (newPosition.y <= -_boundHeight)
-        {
-            newPosition.y = -_boundHeight;
-        }
-        
-        newPosition.y = Math.Clamp(newPosition.y, carBoundsMin.y, carBoundsMax.y);
 
-        _transform.position = newPosition;
+        if (newPosition.y >= _boundHeight - _offsetH)
+            newPosition.y = _boundHeight - _offsetH;
+        else if (newPosition.y <= -_boundHeight)
+            newPosition.y = -_boundHeight;
+
+        transform.position = newPosition;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Cars"))
+            return;
+
+        Debug.Log("Collided");
+        if (GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
+            SceneManager.LoadScene("GameOver");
+        else
+        {
+            if (_moveHorizontal != 0)
+                _moveHorizontal = 0;
+
+            if (_moveVertical != 0)
+                _moveVertical = 0;
+        }
     }
 }

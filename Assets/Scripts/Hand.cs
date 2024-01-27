@@ -47,14 +47,10 @@ public class Hand : MonoBehaviour
         var newPosition = _transform.position + movement * speed * Time.deltaTime;
 
         if (newPosition.x >= _originalPos.x + offset || newPosition.x <= _originalPos.x - offset)
-        {
             newPosition.x = _transform.position.x;
-        }
 
         if (newPosition.y >= _originalPos.y + offset || newPosition.y <= _originalPos.y - offset + 2)
-        {
             newPosition.y = _transform.position.y;
-        }
 
         _transform.position = newPosition;
     }

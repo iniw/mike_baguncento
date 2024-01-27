@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class GUIManager : MonoBehaviour
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
         countdownText.gameObject.SetActive(GameManager.Instance.currentTrafficLight == TrafficLightsState.Red);
         scoreText.text = GameManager.Instance.score.ToString();
-        scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 100f, 1);
+        scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 200f, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int)GameManager.Instance.currentTrafficLight];
         reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
 

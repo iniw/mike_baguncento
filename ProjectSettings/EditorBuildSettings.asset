@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TopDown.unity
     guid: 84aec2cea66b80acea3c65c6fe0c2af9
   - enabled: 1
-    path: Assets/Scenes/Hand.unity
+    path: Assets/Scenes/Minigame.unity
     guid: 73ead17864435fbf8af4768485514ab0
   - enabled: 1
     path: Assets/Scenes/GameOver.unity

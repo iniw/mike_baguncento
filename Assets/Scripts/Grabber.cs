@@ -6,8 +6,6 @@ using System;
 
 public class Grabber : MonoBehaviour
 {
-    static private int _spawnedBalls = 0;
-    static private Rigidbody2D[] _balls;
 
     private Rigidbody2D _ballInArea;
     private DynamicInput _input;
@@ -30,18 +28,6 @@ public class Grabber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (_spawnedBalls == 0)
-        {
-            _balls = GameObject.FindGameObjectsWithTag("Ball").Select(ball => ball.GetComponent<Rigidbody2D>()).ToArray();
-            foreach (Rigidbody2D ball in _balls)
-            {
-                ball.gameObject.SetActive(false);
-            }
-
-            _balls[0].gameObject.SetActive(true);
-            _spawnedBalls++;
-        }
-
         _input = new DynamicInput();
         _input.Enable();
 
@@ -68,14 +54,8 @@ public class Grabber : MonoBehaviour
     void LateUpdate()
     {
         if (_state == State.BallGrabbed)
-        {
             _ballInArea.transform.position = hand.transform.position;
-        }
-    }
 
-    float Normalize(float val, float valmin, float valmax)
-    {
-        return (val - valmin) / (valmax - valmin);
     }
 
     private void GrabBall()
@@ -84,12 +64,9 @@ public class Grabber : MonoBehaviour
         Vector2 ourPos = transform.position;
 
         var delta = pos - ourPos;
-        var maxMagnitude = (new Vector2(transform.parent.localScale.x, transform.parent.localScale.x) / 2f).magnitude;
+        var score = Mathf.RoundToInt(delta.magnitude * 1.5f) * GameManager.Instance.playableBalls;
 
-        var norm = Normalize(delta.magnitude, 0f, maxMagnitude);
-        var score = Mathf.Lerp(20f, 1f, norm);
-
-        GameManager.Instance.score += Mathf.RoundToInt(score);
+        GameManager.Instance.score += score;
 
         _ballInArea.transform.position = hand.transform.position;
         _ballInArea.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -100,11 +77,8 @@ public class Grabber : MonoBehaviour
 
     private void ThrowBall()
     {
-        if (_spawnedBalls < _balls.Length)
-        {
-            _balls[_spawnedBalls].gameObject.SetActive(true);
-            _spawnedBalls++;
-        }
+        if (GameManager.Instance.spawnedBalls < GameManager.Instance.balls.Length)
+            GameManager.Instance.SpawnBall();
 
         _ballInArea.constraints = RigidbodyConstraints2D.None;
 

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Linq;
 
 public enum GameState
 {
@@ -41,10 +42,23 @@ public class GameManager : MonoBehaviour
     public float countdown;
     private TrafficLightsState _lastTrafficLight;
 
+    public int playableBalls = 0;
+    public int spawnedBalls = 0;
+    public Rigidbody2D[] balls;
+
     private void Start()
     {
-        if (Instance == null) Instance = this;
-        else if (Instance != this) Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            if (SceneManager.GetActiveScene().name == "Minigame")
+                InitBalls();
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += LoadState;
     }
@@ -58,6 +72,9 @@ public class GameManager : MonoBehaviour
 
     private void LoadState(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "Minigame")
+            InitBalls();
+
         if (!PlayerPrefs.HasKey("SaveState")) return;
 
         var data = PlayerPrefs.GetString("SaveState").Split('|');
@@ -111,5 +128,25 @@ public class GameManager : MonoBehaviour
             return;
         }
         cars.MoveToFinalPosition();
+    }
+
+    void InitBalls()
+    {
+        Debug.Log("initializing balls");
+        spawnedBalls = 0;
+        playableBalls = 0;
+
+        balls = GameObject.FindGameObjectsWithTag("Ball").Select(ball => ball.GetComponent<Rigidbody2D>()).ToArray();
+        foreach (Rigidbody2D ball in balls)
+            ball.gameObject.SetActive(false);
+        SpawnBall();
+    }
+
+    public void SpawnBall()
+    {
+        Debug.Log("Spawning ball");
+        balls[spawnedBalls].gameObject.SetActive(true);
+        spawnedBalls++;
+        playableBalls++;
     }
 }

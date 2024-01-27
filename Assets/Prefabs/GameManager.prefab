@@ -44,17 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f827e649543cbeebcc50824643a94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
-  day: 0
-  score: 0
-  groupedCarMoneyAmount: 0
+  money: 30
+  goal: 150
+  day: 1
+  score: 40
+  groupedCarMoneyAmount: 30
   currentTrafficLight: 2
-  countdown: 15
   reactionSprites:
   - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  reactionIndex: 0
+  reactionIndex: 1
   trafficLightsUISprites:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 70fb892eea65db93eb3752a4729dd74c, type: 3}
+  - {fileID: 21300000, guid: 8262a33e7c411e036ad2c31578272ab7, type: 3}
+  - {fileID: 21300000, guid: 636434f81f381e7dea9b02678253f777, type: 3}
+  cars: {fileID: 0}
+  onMinigame: 0
+  greenLightDuration: 10
+  yellowLightDuration: 2
+  redLightDuration: 30
+  countdown: 0

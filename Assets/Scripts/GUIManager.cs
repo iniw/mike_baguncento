@@ -15,6 +15,7 @@ public class GUIManager : MonoBehaviour
     private void Update()
     {
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
+        countdownText.gameObject.SetActive(GameManager.Instance.currentTrafficLight == TrafficLightsState.Red);
         scoreText.text = GameManager.Instance.score.ToString("F0");
         scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 100f, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int) GameManager.Instance.currentTrafficLight];

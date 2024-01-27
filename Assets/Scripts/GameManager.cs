@@ -28,12 +28,17 @@ public class GameManager : MonoBehaviour
     public float score;
     public float groupedCarMoneyAmount;
     public TrafficLightsState currentTrafficLight;
-    public float countdown;
     public List<Sprite> reactionSprites;
     public int reactionIndex;
     public List<Sprite> trafficLightsUISprites;
-
+    public CarMovement cars;
     public bool onMinigame = false;
+    
+    public float greenLightDuration = 10f;
+    public float yellowLightDuration = 3f;
+    public float redLightDuration = 10f;
+    public float countdown;
+    private TrafficLightsState _lastTrafficLight;
     
     private void Start()
     {
@@ -70,18 +75,40 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    { 
+    {
         countdown -= Time.deltaTime;
+
         if (countdown <= 0)
         {
-            countdown = 0;
-            currentTrafficLight = TrafficLightsState.Red;
+            _lastTrafficLight = currentTrafficLight;
+            switch (currentTrafficLight)
+            {
+                case TrafficLightsState.Green:
+                    currentTrafficLight = TrafficLightsState.Yellow;
+                    countdown = yellowLightDuration;
+                    break;
+                case TrafficLightsState.Yellow:
+                    currentTrafficLight = TrafficLightsState.Red;
+                    countdown = redLightDuration;
+                    break;
+                case TrafficLightsState.Red:
+                    currentTrafficLight = TrafficLightsState.Green;
+                    countdown = greenLightDuration;
+                    break;
+            }
         }
-        SaveState();
-    }
 
-    public void SetTrafficLight(TrafficLightsState state)
-    {
-        currentTrafficLight = state;
+        SaveState();
+
+        if (onMinigame) return;
+
+        cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
+
+        if (_lastTrafficLight == TrafficLightsState.Red)
+        {
+            cars.LeaveScene();
+            return;
+        }
+        cars.MoveToFinalPosition();
     }
 }

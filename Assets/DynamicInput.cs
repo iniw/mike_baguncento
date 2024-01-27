@@ -64,7 +64,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LeftHandThrowBall"",
+                    ""name"": ""LeftHandAction"",
                     ""type"": ""Button"",
                     ""id"": ""73a5572f-46ad-4cf7-bb93-7b0734324cbc"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RightHandThrowBall"",
+                    ""name"": ""RightHandAction"",
                     ""type"": ""Button"",
                     ""id"": ""cbeaf8ba-39fb-4a99-8b42-499b39df68e0"",
                     ""expectedControlType"": ""Button"",
@@ -222,7 +222,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftHandThrowBall"",
+                    ""action"": ""LeftHandAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -233,7 +233,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RightHandThrowBall"",
+                    ""action"": ""RightHandAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -248,8 +248,8 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         m_Actions_RightHandVerticalMovement = m_Actions.FindAction("RightHandVerticalMovement", throwIfNotFound: true);
         m_Actions_LeftHandVerticalMovement = m_Actions.FindAction("LeftHandVerticalMovement", throwIfNotFound: true);
         m_Actions_RightHandHorizontalMovement = m_Actions.FindAction("RightHandHorizontalMovement", throwIfNotFound: true);
-        m_Actions_LeftHandThrowBall = m_Actions.FindAction("LeftHandThrowBall", throwIfNotFound: true);
-        m_Actions_RightHandThrowBall = m_Actions.FindAction("RightHandThrowBall", throwIfNotFound: true);
+        m_Actions_LeftHandAction = m_Actions.FindAction("LeftHandAction", throwIfNotFound: true);
+        m_Actions_RightHandAction = m_Actions.FindAction("RightHandAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,8 +315,8 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_RightHandVerticalMovement;
     private readonly InputAction m_Actions_LeftHandVerticalMovement;
     private readonly InputAction m_Actions_RightHandHorizontalMovement;
-    private readonly InputAction m_Actions_LeftHandThrowBall;
-    private readonly InputAction m_Actions_RightHandThrowBall;
+    private readonly InputAction m_Actions_LeftHandAction;
+    private readonly InputAction m_Actions_RightHandAction;
     public struct ActionsActions
     {
         private @DynamicInput m_Wrapper;
@@ -325,8 +325,8 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         public InputAction @RightHandVerticalMovement => m_Wrapper.m_Actions_RightHandVerticalMovement;
         public InputAction @LeftHandVerticalMovement => m_Wrapper.m_Actions_LeftHandVerticalMovement;
         public InputAction @RightHandHorizontalMovement => m_Wrapper.m_Actions_RightHandHorizontalMovement;
-        public InputAction @LeftHandThrowBall => m_Wrapper.m_Actions_LeftHandThrowBall;
-        public InputAction @RightHandThrowBall => m_Wrapper.m_Actions_RightHandThrowBall;
+        public InputAction @LeftHandAction => m_Wrapper.m_Actions_LeftHandAction;
+        public InputAction @RightHandAction => m_Wrapper.m_Actions_RightHandAction;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -348,12 +348,12 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @RightHandHorizontalMovement.started += instance.OnRightHandHorizontalMovement;
             @RightHandHorizontalMovement.performed += instance.OnRightHandHorizontalMovement;
             @RightHandHorizontalMovement.canceled += instance.OnRightHandHorizontalMovement;
-            @LeftHandThrowBall.started += instance.OnLeftHandThrowBall;
-            @LeftHandThrowBall.performed += instance.OnLeftHandThrowBall;
-            @LeftHandThrowBall.canceled += instance.OnLeftHandThrowBall;
-            @RightHandThrowBall.started += instance.OnRightHandThrowBall;
-            @RightHandThrowBall.performed += instance.OnRightHandThrowBall;
-            @RightHandThrowBall.canceled += instance.OnRightHandThrowBall;
+            @LeftHandAction.started += instance.OnLeftHandAction;
+            @LeftHandAction.performed += instance.OnLeftHandAction;
+            @LeftHandAction.canceled += instance.OnLeftHandAction;
+            @RightHandAction.started += instance.OnRightHandAction;
+            @RightHandAction.performed += instance.OnRightHandAction;
+            @RightHandAction.canceled += instance.OnRightHandAction;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -370,12 +370,12 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @RightHandHorizontalMovement.started -= instance.OnRightHandHorizontalMovement;
             @RightHandHorizontalMovement.performed -= instance.OnRightHandHorizontalMovement;
             @RightHandHorizontalMovement.canceled -= instance.OnRightHandHorizontalMovement;
-            @LeftHandThrowBall.started -= instance.OnLeftHandThrowBall;
-            @LeftHandThrowBall.performed -= instance.OnLeftHandThrowBall;
-            @LeftHandThrowBall.canceled -= instance.OnLeftHandThrowBall;
-            @RightHandThrowBall.started -= instance.OnRightHandThrowBall;
-            @RightHandThrowBall.performed -= instance.OnRightHandThrowBall;
-            @RightHandThrowBall.canceled -= instance.OnRightHandThrowBall;
+            @LeftHandAction.started -= instance.OnLeftHandAction;
+            @LeftHandAction.performed -= instance.OnLeftHandAction;
+            @LeftHandAction.canceled -= instance.OnLeftHandAction;
+            @RightHandAction.started -= instance.OnRightHandAction;
+            @RightHandAction.performed -= instance.OnRightHandAction;
+            @RightHandAction.canceled -= instance.OnRightHandAction;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -399,7 +399,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         void OnRightHandVerticalMovement(InputAction.CallbackContext context);
         void OnLeftHandVerticalMovement(InputAction.CallbackContext context);
         void OnRightHandHorizontalMovement(InputAction.CallbackContext context);
-        void OnLeftHandThrowBall(InputAction.CallbackContext context);
-        void OnRightHandThrowBall(InputAction.CallbackContext context);
+        void OnLeftHandAction(InputAction.CallbackContext context);
+        void OnRightHandAction(InputAction.CallbackContext context);
     }
 }

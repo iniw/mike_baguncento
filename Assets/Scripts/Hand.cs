@@ -12,7 +12,7 @@ public class Hand : MonoBehaviour
 {
     public HandSide side = HandSide.Left;
     public float speed = 2.0f;
-    
+
     private Transform _transform;
     private DynamicInput _input;
 
@@ -43,7 +43,7 @@ public class Hand : MonoBehaviour
     private void FixedUpdate()
     {
         var movement = new Vector3(_moveHorizontal, _moveVertical, 0.0f);
-        
+
         var newPosition = _transform.position + movement * speed * Time.deltaTime;
 
         if (newPosition.x >= _originalPos.x + offset || newPosition.x <= _originalPos.x - offset)
@@ -55,7 +55,7 @@ public class Hand : MonoBehaviour
         {
             newPosition.y = _transform.position.y;
         }
-        
+
         _transform.position = newPosition;
     }
 }

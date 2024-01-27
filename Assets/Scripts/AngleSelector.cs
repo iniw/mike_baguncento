@@ -10,53 +10,12 @@ using UnityEngine.XR;
 
 public class AngleSelector : MonoBehaviour
 {
-    private Transform _transform;
     private float _yRotation = 0f;
 
     private const float MAX_ANGLE = 220f;
-
     private const float TIME_TO_FINISH_ROTATION = 2f;
 
-    private const float FORCE_MAGNITUDE = 7.5f;
-
-    private DynamicInput _input;
-
     public Hand hand;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _transform = GetComponent<Transform>();
-
-        InvokeRepeating(nameof(UpdateAngle), 0, TIME_TO_FINISH_ROTATION / MAX_ANGLE);
-
-        _input = new DynamicInput();
-        _input.Enable();
-
-        var throwBallAction = hand.side == HandSide.Left ? _input.Actions.LeftHandThrowBall : _input.Actions.RightHandThrowBall;
-        throwBallAction.performed += _ =>
-        {
-            var rigidBody = GameObject.Find("Ball").GetComponent<Rigidbody2D>();
-
-            var vector = (hand.side == HandSide.Left ? transform.right : -transform.right) * FORCE_MAGNITUDE;
-
-            rigidBody.gravityScale = 1;
-            rigidBody.AddForce(vector, ForceMode2D.Impulse);
-        };
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            var ball = GameObject.Find("Ball");
-            ball.transform.position = transform.position;
-
-            var rigidBody = ball.GetComponent<Rigidbody2D>();
-            rigidBody.gravityScale = 0;
-            rigidBody.velocity = Vector2.zero;
-        }
-    }
 
     void LateUpdate()
     {
@@ -66,6 +25,16 @@ public class AngleSelector : MonoBehaviour
     void UpdateAngle()
     {
         float triangleWave = Mathf.Abs((_yRotation++ % MAX_ANGLE) - MAX_ANGLE / 2) - 10f;
-        _transform.eulerAngles = new Vector3(0, 0, hand.side == HandSide.Left ? triangleWave : -triangleWave);
+        transform.eulerAngles = new Vector3(0, 0, hand.side == HandSide.Left ? triangleWave : -triangleWave);
+    }
+
+    void OnEnable()
+    {
+        InvokeRepeating(nameof(UpdateAngle), 0, TIME_TO_FINISH_ROTATION / MAX_ANGLE);
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke(nameof(UpdateAngle));
     }
 }

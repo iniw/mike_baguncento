@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using System.Linq;
+using SpriteRenderer = UnityEngine.SpriteRenderer;
 
 public enum GameState
 {
@@ -33,7 +31,7 @@ public class GameManager : MonoBehaviour
     public List<Sprite> reactionSprites;
     public int reactionIndex;
     public List<Sprite> trafficLightsUISprites;
-    public CarMovement cars;
+    private CarMovement _cars;
     public bool onMinigame = false;
 
     public float greenLightDuration = 10f;
@@ -58,8 +56,23 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        var sceneCar = GameObject.FindGameObjectWithTag("Cars").GetComponent<CarMovement>();
+        
+        if (_cars == null && sceneCar != null)
+            _cars = sceneCar;
+        else
+            Destroy(sceneCar);
+        
+        var isMinigame = SceneManager.GetActiveScene().name == "Minigame";
+        foreach (var sprite in _cars.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sprite.enabled = !isMinigame;
+        }
 
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_cars);
+        
         SceneManager.sceneLoaded += LoadState;
     }
 
@@ -86,12 +99,7 @@ public class GameManager : MonoBehaviour
         countdown = float.Parse(data[5]);
         reactionIndex = int.Parse(data[6]);
     }
-
-    public void calcScore()
-    {
-        // TODO
-    }
-
+    
     private void Update()
     {
         countdown -= Time.deltaTime;
@@ -117,20 +125,20 @@ public class GameManager : MonoBehaviour
         }
 
         SaveState();
+        
+        if (_cars == null) return;
 
-        if (onMinigame || cars == null) return;
-
-        cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
+        _cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
 
         if (_lastTrafficLight == TrafficLightsState.Red)
         {
-            cars.LeaveScene();
+            _cars.LeaveScene();
             return;
         }
-        cars.MoveToFinalPosition();
+        _cars.MoveToFinalPosition();
     }
 
-    void InitBalls()
+    private void InitBalls()
     {
         Debug.Log("initializing balls");
         spawnedBalls = 0;

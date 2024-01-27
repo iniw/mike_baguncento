@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +17,7 @@ public class MinigameTrigger : MonoBehaviour
         {
             GameManager.Instance.onMinigame = true;
             GameManager.Instance.SaveState();
-            SceneManager.LoadScene("Hand");
+            SceneManager.LoadScene("Minigame");
         };
     }
 }

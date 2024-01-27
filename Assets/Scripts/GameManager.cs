@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public int money;
+    public int goal;
     public int day;
     public float score;
     public float groupedCarMoneyAmount;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (Instance == null) Instance = this;
+        else if (Instance != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += LoadState;
     }

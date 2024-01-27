@@ -16,13 +16,13 @@ public class GUIManager : MonoBehaviour
     {
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
         scoreText.text = GameManager.Instance.score.ToString("F0");
-        scoreBar.transform.localScale = new Vector3(GameManager.Instance.score / 100f, 1, 1);
+        scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 100f, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int) GameManager.Instance.currentTrafficLight];
         reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
         
         if (moneyText != null)
-            moneyText.text = GameManager.Instance.money.ToString();
+            moneyText.text = $"$ {GameManager.Instance.money.ToString()} / {GameManager.Instance.goal.ToString()}";
         if (dayText != null)
-            dayText.text = GameManager.Instance.day.ToString();
+            dayText.text = $"DAY {GameManager.Instance.day.ToString()} / 3";
     }
 }

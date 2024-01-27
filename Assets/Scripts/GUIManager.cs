@@ -16,11 +16,11 @@ public class GUIManager : MonoBehaviour
     {
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
         countdownText.gameObject.SetActive(GameManager.Instance.currentTrafficLight == TrafficLightsState.Red);
-        scoreText.text = GameManager.Instance.score.ToString("F0");
+        scoreText.text = GameManager.Instance.score.ToString();
         scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 100f, 1);
-        trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int) GameManager.Instance.currentTrafficLight];
+        trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int)GameManager.Instance.currentTrafficLight];
         reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
-        
+
         if (moneyText != null)
             moneyText.text = $"$ {GameManager.Instance.money.ToString()} / {GameManager.Instance.goal.ToString()}";
         if (dayText != null)

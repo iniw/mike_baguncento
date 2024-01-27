@@ -17,6 +17,11 @@ public class AngleSelector : MonoBehaviour
 
     public Hand hand;
 
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     void LateUpdate()
     {
         transform.position = hand.transform.position;

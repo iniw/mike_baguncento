@@ -49,6 +49,14 @@ public class Player : MonoBehaviour
         var movement = new Vector3(_moveHorizontal, _moveVertical, 0.0f);
 
         var newPosition = _transform.position + movement * (speed * Time.deltaTime);
+        
+        var carBounds = GameObject.FindGameObjectWithTag("Cars").GetComponent<Collider2D>().bounds;
+
+        // if (carBounds.Contains(newPosition) && GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
+        //     SceneManager.LoadScene("GameOver");
+        
+        var carBoundsMin = carBounds.min;
+        var carBoundsMax = carBounds.max;
 
         if (newPosition.x >= _boundWidth - _offsetW)
         {
@@ -59,6 +67,8 @@ public class Player : MonoBehaviour
             newPosition.x = -_boundWidth;
         }
 
+        newPosition.x = Math.Clamp(newPosition.x, carBoundsMin.x, carBoundsMax.x);
+
         if (newPosition.y >= _boundHeight - _offsetH)
         {
             newPosition.y = _boundHeight - _offsetH;
@@ -68,17 +78,8 @@ public class Player : MonoBehaviour
             newPosition.y = -_boundHeight;
         }
         
-        var hits = Physics2D.OverlapCircleAll(newPosition, 0.5f);
-        var dead = false;
-        foreach (var hit in hits)
-        {
-            if (!hit.CompareTag("Cars")) continue;
-            if (GameManager.Instance.currentTrafficLight == TrafficLightsState.Red) continue;
-            dead = true;
-            SceneManager.LoadScene("GameOver");
-        }
+        newPosition.y = Math.Clamp(newPosition.y, carBoundsMin.y, carBoundsMax.y);
 
-        if (dead) return;
         _transform.position = newPosition;
     }
 }

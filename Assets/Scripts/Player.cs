@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
 
-    private DynamicInput _input;
+    public DynamicInput input;
     private float _moveHorizontal = 0.0f;
     private float _moveVertical = 0.0f;
     private float _boundWidth = 0.0f;
@@ -16,25 +16,36 @@ public class Player : MonoBehaviour
     private float _offsetW = 0.0f;
     private float _offsetH = 0.0f;
 
-    private Rigidbody2D rb2d;
+    public static Player Instance;
 
     private void Start()
     {
-
-        rb2d = GetComponent<Rigidbody2D>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         var spriteRenderer = GetComponent<SpriteRenderer>();
 
         var spriteSize = spriteRenderer.sprite.bounds.size;
 
-        _input = new DynamicInput();
-        _input.Enable();
+        input = new DynamicInput();
+        input.Enable();
+        
+        DontDestroyOnLoad(gameObject);
 
-        _input.Actions.LeftHandHorizontalMovement.performed += ctx => _moveHorizontal = ctx.ReadValue<float>();
-        _input.Actions.LeftHandHorizontalMovement.canceled += ctx => _moveHorizontal = 0.0f;
+        GetComponent<SpriteRenderer>().enabled = true;
+        
+        input.Actions.LeftHandHorizontalMovement.performed += ctx => _moveHorizontal = ctx.ReadValue<float>();
+        input.Actions.LeftHandHorizontalMovement.canceled += ctx => _moveHorizontal = 0.0f;
 
-        _input.Actions.LeftHandVerticalMovement.performed += ctx => _moveVertical = ctx.ReadValue<float>();
-        _input.Actions.LeftHandVerticalMovement.canceled += ctx => _moveVertical = 0.0f;
+        input.Actions.LeftHandVerticalMovement.performed += ctx => _moveVertical = ctx.ReadValue<float>();
+        input.Actions.LeftHandVerticalMovement.canceled += ctx => _moveVertical = 0.0f;
 
         var mainCamera = Camera.main;
         var cameraSize = mainCamera.orthographicSize;

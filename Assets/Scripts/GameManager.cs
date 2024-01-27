@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public int reactionIndex;
     public List<Sprite> trafficLightsUISprites;
     private CarMovement _cars;
-    public bool onMinigame = false;
 
     public float greenLightDuration = 10f;
     public float yellowLightDuration = 3f;
@@ -156,5 +155,10 @@ public class GameManager : MonoBehaviour
         balls[spawnedBalls].gameObject.SetActive(true);
         spawnedBalls++;
         playableBalls++;
+    }
+    
+    public void StartGame()
+    {
+        SceneManager.LoadScene("TopDown");
     }
 }

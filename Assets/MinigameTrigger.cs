@@ -15,9 +15,10 @@ public class MinigameTrigger : MonoBehaviour
     {
         _input.Actions.TriggerMinigame.performed += ctx =>
         {
-            GameManager.Instance.onMinigame = true;
             GameManager.Instance.SaveState();
             SceneManager.LoadScene("Minigame");
+            Player.Instance.input.Disable();
+            Player.Instance.GetComponent<SpriteRenderer>().enabled = false; 
         };
     }
 }

@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 
         SaveState();
 
-        if (onMinigame) return;
+        if (onMinigame || cars == null) return;
 
         cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
 

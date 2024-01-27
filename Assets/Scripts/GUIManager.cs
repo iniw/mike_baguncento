@@ -1,0 +1,28 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GUIManager : MonoBehaviour
+{
+    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI scoreText;
+    public GameObject scoreBar;
+    public Image trafficLightSprite;
+    public Image reactionSprite;
+
+    private void Update()
+    {
+        countdownText.text = GameManager.Instance.countdown.ToString("F0");
+        scoreText.text = GameManager.Instance.score.ToString("F0");
+        scoreBar.transform.localScale = new Vector3(GameManager.Instance.score / 100f, 1, 1);
+        trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int) GameManager.Instance.currentTrafficLight];
+        reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
+        
+        if (moneyText != null)
+            moneyText.text = GameManager.Instance.money.ToString();
+        if (dayText != null)
+            dayText.text = GameManager.Instance.day.ToString();
+    }
+}

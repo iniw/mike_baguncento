@@ -15,7 +15,9 @@ public class AngleSelector : MonoBehaviour
 
     private const float MAX_ANGLE = 220f;
 
-    private const float FORCE_MAGNITUDE = 10f;
+    private const float TIME_TO_FINISH_ROTATION = 2f;
+
+    private const float FORCE_MAGNITUDE = 7.5f;
 
     private DynamicInput _input;
 
@@ -26,7 +28,7 @@ public class AngleSelector : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
 
-        InvokeRepeating(nameof(UpdateAngle), 0, 0.01f);
+        InvokeRepeating(nameof(UpdateAngle), 0, TIME_TO_FINISH_ROTATION / MAX_ANGLE);
 
         _input = new DynamicInput();
         _input.Enable();
@@ -37,8 +39,6 @@ public class AngleSelector : MonoBehaviour
             var rigidBody = GameObject.Find("Ball").GetComponent<Rigidbody2D>();
 
             var vector = (hand.side == HandSide.Left ? transform.right : -transform.right) * FORCE_MAGNITUDE;
-
-            Debug.Log($"Vector = {vector} | R={transform.right} | U={transform.up}");
 
             rigidBody.gravityScale = 1;
             rigidBody.AddForce(vector, ForceMode2D.Impulse);

@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 0
-  speed: 7
+  speed: 16
   offset: 3
 --- !u!50 &1193893086
 Rigidbody2D:
@@ -1227,7 +1227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   side: 1
-  speed: 7
+  speed: 16
   offset: 3
 --- !u!50 &1799352128
 Rigidbody2D:

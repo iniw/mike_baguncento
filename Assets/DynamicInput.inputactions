@@ -104,6 +104,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Controller",
+                    "id": "27d79030-f46f-45d9-9d6a-a87c2860714a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandHorizontalMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a03f66c2-40d0-4b5a-adbc-677fe288b218",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandHorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "240de456-529e-4b33-98a3-e3234c9c7f93",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandHorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Movement",
                     "id": "9868c468-f7bc-4b05-b8de-2f16e6dc8300",
                     "path": "1DAxis",
@@ -129,6 +162,39 @@
                     "name": "positive",
                     "id": "03067407-5fd5-4660-a577-917b99b4f801",
                     "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandHorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Controller",
+                    "id": "8930f3f0-f397-4e41-9ea3-2aa17a313b49",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandHorizontalMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "05483ba5-5f32-402c-9c17-705918a522a0",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandHorizontalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7a59a9a6-90ef-4e8e-be5a-7eac9dc8e49c",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -170,6 +236,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Controller",
+                    "id": "4db47e31-1a15-44db-b5fe-13010f65916f",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandVerticalMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f9a23865-5981-465e-9c8e-9ad8db9a8364",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandVerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "045e53d2-960f-4e5c-b562-66d52a5fc689",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandVerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Movement",
                     "id": "7600bbf1-c6bc-4f19-b9d8-74bf85e9bc1d",
                     "path": "1DAxis",
@@ -203,6 +302,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Controller",
+                    "id": "44596318-cbb4-4af4-a725-e66712ef2e28",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandVerticalMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9d7cb324-449b-4821-b0a2-f3584317e583",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandVerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2df53b71-6f0c-48e5-aa43-c3ae6d0e43ab",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandVerticalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "88dbc561-f095-4c80-b136-c6e4ea323d2d",
                     "path": "<Keyboard>/v",
@@ -215,8 +347,30 @@
                 },
                 {
                     "name": "",
+                    "id": "e19ab950-0aee-4438-a586-8de0957fe5ca",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "19ecf217-c28a-4954-91de-da43ae56081c",
                     "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5423c76e-093b-46d9-b20e-60b1b1a9d5df",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -239,6 +393,17 @@
                     "name": "",
                     "id": "0bca2465-a30a-472a-92b7-7b484bda637e",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerMinigame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1a6b859-fe3d-4ffe-bb58-e81ccf55ddce",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

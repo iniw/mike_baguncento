@@ -1,4 +1,7 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,7 +23,6 @@ public class Player : MonoBehaviour
         _transform = GetComponent<Transform>();
         var spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Get the sprite's size
         var spriteSize = spriteRenderer.sprite.bounds.size;
 
         _input = new DynamicInput();
@@ -65,7 +67,18 @@ public class Player : MonoBehaviour
         {
             newPosition.y = -_boundHeight;
         }
+        
+        var hits = Physics2D.OverlapCircleAll(newPosition, 0.5f);
+        var dead = false;
+        foreach (var hit in hits)
+        {
+            if (!hit.CompareTag("Cars")) continue;
+            if (GameManager.Instance.currentTrafficLight == TrafficLightsState.Red) continue;
+            dead = true;
+            SceneManager.LoadScene("GameOver");
+        }
 
+        if (dead) return;
         _transform.position = newPosition;
     }
 }

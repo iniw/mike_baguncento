@@ -8,6 +8,7 @@ TagManager:
   - Grabber
   - EnterMiniTrigger
   - GameManager
+  - Cars
   layers:
   - Default
   - TransparentFX

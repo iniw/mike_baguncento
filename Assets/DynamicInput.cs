@@ -80,6 +80,15 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TriggerMinigame"",
+                    ""type"": ""Button"",
+                    ""id"": ""792dfc4f-678b-4580-aa00-1ff6f0be5c82"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +245,28 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""action"": ""RightHandAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f86b0f6d-2a28-4180-a837-be7038384bb8"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bca2465-a30a-472a-92b7-7b484bda637e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +281,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         m_Actions_RightHandHorizontalMovement = m_Actions.FindAction("RightHandHorizontalMovement", throwIfNotFound: true);
         m_Actions_LeftHandAction = m_Actions.FindAction("LeftHandAction", throwIfNotFound: true);
         m_Actions_RightHandAction = m_Actions.FindAction("RightHandAction", throwIfNotFound: true);
+        m_Actions_TriggerMinigame = m_Actions.FindAction("TriggerMinigame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +349,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_RightHandHorizontalMovement;
     private readonly InputAction m_Actions_LeftHandAction;
     private readonly InputAction m_Actions_RightHandAction;
+    private readonly InputAction m_Actions_TriggerMinigame;
     public struct ActionsActions
     {
         private @DynamicInput m_Wrapper;
@@ -327,6 +360,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         public InputAction @RightHandHorizontalMovement => m_Wrapper.m_Actions_RightHandHorizontalMovement;
         public InputAction @LeftHandAction => m_Wrapper.m_Actions_LeftHandAction;
         public InputAction @RightHandAction => m_Wrapper.m_Actions_RightHandAction;
+        public InputAction @TriggerMinigame => m_Wrapper.m_Actions_TriggerMinigame;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +388,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @RightHandAction.started += instance.OnRightHandAction;
             @RightHandAction.performed += instance.OnRightHandAction;
             @RightHandAction.canceled += instance.OnRightHandAction;
+            @TriggerMinigame.started += instance.OnTriggerMinigame;
+            @TriggerMinigame.performed += instance.OnTriggerMinigame;
+            @TriggerMinigame.canceled += instance.OnTriggerMinigame;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -376,6 +413,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @RightHandAction.started -= instance.OnRightHandAction;
             @RightHandAction.performed -= instance.OnRightHandAction;
             @RightHandAction.canceled -= instance.OnRightHandAction;
+            @TriggerMinigame.started -= instance.OnTriggerMinigame;
+            @TriggerMinigame.performed -= instance.OnTriggerMinigame;
+            @TriggerMinigame.canceled -= instance.OnTriggerMinigame;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -401,5 +441,6 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         void OnRightHandHorizontalMovement(InputAction.CallbackContext context);
         void OnLeftHandAction(InputAction.CallbackContext context);
         void OnRightHandAction(InputAction.CallbackContext context);
+        void OnTriggerMinigame(InputAction.CallbackContext context);
     }
 }

@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public List<Sprite> reactionSprites;
     public int reactionIndex;
     public List<Sprite> trafficLightsUISprites;
+
+    public bool onMinigame = false;
     
     private void Start()
     {

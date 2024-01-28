@@ -112,9 +112,8 @@ public class Player : MonoBehaviour
         Debug.Log("Collided");
         if (GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
         {
-            Destroy(gameObject);
             GameManager.Instance.Destroy();
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Death");
         }
         else
         {

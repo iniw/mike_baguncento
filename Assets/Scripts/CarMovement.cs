@@ -44,7 +44,7 @@ public class CarMovement : MonoBehaviour
             if (GameManager.Instance.day >= 3)
             {
                 GameManager.Instance.Destroy();
-                SceneManager.LoadScene(GameManager.Instance.score >= GameManager.Instance.goal ? "End" : "GameOver");
+                SceneManager.LoadScene(GameManager.Instance.score >= GameManager.Instance.goal ? "End" : "Poor");
                 return false;
             }
 

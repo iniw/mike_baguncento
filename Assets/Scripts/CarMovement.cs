@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using Debug = UnityEngine.Debug;
 
 public class CarMovement : MonoBehaviour
@@ -43,8 +44,8 @@ public class CarMovement : MonoBehaviour
             GameManager.Instance.canProceed = false;
             if (GameManager.Instance.day >= 3)
             {
+                SceneManager.LoadScene(GameManager.Instance.money >= GameManager.Instance.goal ? "End" : "Poor");
                 GameManager.Instance.Destroy();
-                SceneManager.LoadScene(GameManager.Instance.score >= GameManager.Instance.goal ? "End" : "Poor");
                 return false;
             }
 

@@ -100,8 +100,11 @@ public class GameManager : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(Player.Instance.gameObject);
-        Player.Instance = null;
+        if (Player.Instance)
+        {
+            Destroy(Player.Instance.gameObject);
+            Player.Instance = null;
+        }
 
         if (_cars)
             Destroy(_cars.gameObject);

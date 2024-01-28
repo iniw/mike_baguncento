@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
@@ -15,13 +16,13 @@ public class StartButton : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() =>
         {
             _input.Disable();
-            GameManager.Instance.StartGame();
+            SceneManager.LoadScene("TopDown");
         });
 
         _input.Actions.StartGame.performed += ctx =>
         {
             _input.Disable();
-            GameManager.Instance.StartGame();
+            SceneManager.LoadScene("TopDown");
         };
 
     }

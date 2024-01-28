@@ -107,6 +107,15 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""df818d81-0a81-4cc2-803e-e216ed868e1b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -527,6 +536,17 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""action"": ""StartGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c033b55-0bab-487d-bbbc-5ac022ee5fe2"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -544,6 +564,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         m_Actions_TriggerMinigame = m_Actions.FindAction("TriggerMinigame", throwIfNotFound: true);
         m_Actions_ExitMinigame = m_Actions.FindAction("ExitMinigame", throwIfNotFound: true);
         m_Actions_StartGame = m_Actions.FindAction("StartGame", throwIfNotFound: true);
+        m_Actions_Reset = m_Actions.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -614,6 +635,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_TriggerMinigame;
     private readonly InputAction m_Actions_ExitMinigame;
     private readonly InputAction m_Actions_StartGame;
+    private readonly InputAction m_Actions_Reset;
     public struct ActionsActions
     {
         private @DynamicInput m_Wrapper;
@@ -627,6 +649,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         public InputAction @TriggerMinigame => m_Wrapper.m_Actions_TriggerMinigame;
         public InputAction @ExitMinigame => m_Wrapper.m_Actions_ExitMinigame;
         public InputAction @StartGame => m_Wrapper.m_Actions_StartGame;
+        public InputAction @Reset => m_Wrapper.m_Actions_Reset;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -663,6 +686,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @StartGame.started += instance.OnStartGame;
             @StartGame.performed += instance.OnStartGame;
             @StartGame.canceled += instance.OnStartGame;
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -694,6 +720,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @StartGame.started -= instance.OnStartGame;
             @StartGame.performed -= instance.OnStartGame;
             @StartGame.canceled -= instance.OnStartGame;
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -722,5 +751,6 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         void OnTriggerMinigame(InputAction.CallbackContext context);
         void OnExitMinigame(InputAction.CallbackContext context);
         void OnStartGame(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
 }

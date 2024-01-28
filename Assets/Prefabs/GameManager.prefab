@@ -42,12 +42,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28f827e649543cbeebcc50824643a94a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 30
+  m_Name:
+  m_EditorClassIdentifier:
+  money: 0
   goal: 150
   day: 1
   score: 40
+  score: 0
   currentTrafficLight: 2
   reactionSprites:
   - {fileID: 9100000, guid: f5138890fd1a99b4ea76bd76f8af5efa, type: 2}
@@ -63,10 +64,14 @@ MonoBehaviour:
   playableBalls: 0
   spawnedBalls: 0
   balls: []
-  handSprites: []
+  handSprites:
+  - {fileID: 21300000, guid: 023b8b3908c4eb621abfd1bab4f59609, type: 3}
+  - {fileID: 21300000, guid: 5dfde16cad150121a826696541cffdc8, type: 3}
+  - {fileID: 21300000, guid: d2a7f0cb7f2710c2f87c669cbadba2ab, type: 3}
+  - {fileID: 21300000, guid: 8403e1ba986170d8ba5c703b7364e79c, type: 3}
   canProceed: 0
   moveTillNext: 0
-  win_sprite: {fileID: 0}
-  lose_sprite: {fileID: 0}
+  win_sprite: {fileID: 21300000, guid: 920b9406a0b2a425fb211c6effce6bd2, type: 3}
+  lose_sprite: {fileID: 21300000, guid: a31d6bbf11f8533f7801ea114211fab1, type: 3}
   ballsLinearDrag: 1
   ballsThrowMultiplier: 1.5

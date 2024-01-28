@@ -46,9 +46,6 @@ public class GameManager : MonoBehaviour
     public bool canProceed = false;
     public bool moveTillNext = false;
 
-    public Sprite win_sprite;
-    public Sprite lose_sprite;
-
     public float ballsLinearDrag = 1f;
     public float ballsThrowMultiplier = 1.5f;
 
@@ -74,12 +71,6 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Minigame")
             InitBalls();
 
-        if (scene.name == "End")
-        {
-            var background = GameObject.Find("Background").GetComponent<SpriteRenderer>();
-            background.sprite = money >= goal ? win_sprite : lose_sprite;
-        }
-
         if (scene.name == "TopDown")
         {
             if (score <= 0)
@@ -103,6 +94,19 @@ public class GameManager : MonoBehaviour
                 sprite.enabled = scene.name == "TopDown";
     }
 
+
+    public void Destroy()
+    {
+        if (_cars)
+            Destroy(_cars.gameObject);
+
+        if (balls != null && balls.Length > 0)
+            foreach (var ball in balls)
+                Destroy(ball.gameObject);
+
+        Destroy(gameObject);
+        Destroy(Player.Instance.gameObject);
+    }
 
     private void Update()
     {

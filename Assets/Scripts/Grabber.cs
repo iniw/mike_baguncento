@@ -47,7 +47,6 @@ public class Grabber : MonoBehaviour
         };
     }
 
-
     void LateUpdate()
     {
         if (_state == State.BallGrabbed)

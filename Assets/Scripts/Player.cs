@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
             newPosition.y = _boundHeight - _offsetH;
         else if (newPosition.y <= -_boundHeight)
             newPosition.y = -_boundHeight;
-        
+
         var animController = GetComponent<Animator>();
         if (newPosition.x > transform.position.x)
             animController.SetInteger(Dir, 3);
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
             animController.SetInteger(Dir, 4);
         else
             animController.SetInteger(Dir, 0);
-        
+
         transform.position = newPosition;
     }
 
@@ -112,6 +112,8 @@ public class Player : MonoBehaviour
         Debug.Log("Collided");
         if (GameManager.Instance.currentTrafficLight != TrafficLightsState.Red)
         {
+            Destroy(gameObject);
+            GameManager.Instance.Destroy();
             SceneManager.LoadScene("GameOver");
         }
         else

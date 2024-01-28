@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public int playableBalls = 0;
     public int spawnedBalls = 0;
     public Rigidbody2D[] balls;
+    public List<Sprite> handSprites;
 
     public bool canProceed = false;
     public bool moveTillNext = false;
@@ -134,7 +135,6 @@ public class GameManager : MonoBehaviour
 
     private void InitBalls()
     {
-        Debug.Log("initializing balls");
         spawnedBalls = 0;
         playableBalls = 0;
 
@@ -146,7 +146,6 @@ public class GameManager : MonoBehaviour
 
     public void SpawnBall()
     {
-        Debug.Log("Spawning ball");
         balls[spawnedBalls].gameObject.SetActive(true);
         spawnedBalls++;
         playableBalls++;

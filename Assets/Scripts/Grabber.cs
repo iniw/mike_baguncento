@@ -66,6 +66,10 @@ public class Grabber : MonoBehaviour
 
         _ballInArea.transform.position = hand.transform.position;
         _ballInArea.constraints = RigidbodyConstraints2D.FreezeAll;
+        
+        var ballIdx = int.Parse(_ballInArea.gameObject.name[^1].ToString());
+        gameObject.GetComponentInParent<SpriteRenderer>().sprite = GameManager.Instance.handSprites[ballIdx];
+        _ballInArea.GetComponent<SpriteRenderer>().enabled = false;
 
         angleSelector.gameObject.SetActive(true);
     }
@@ -78,6 +82,9 @@ public class Grabber : MonoBehaviour
 
         _ballInArea.constraints = RigidbodyConstraints2D.None;
 
+        _ballInArea.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponentInParent<SpriteRenderer>().sprite = GameManager.Instance.handSprites[^1];
+        
         var vector = (hand.side == HandSide.Left ? angleSelector.transform.right : -angleSelector.transform.right) * FORCE_MAGNITUDE;
         _ballInArea.AddForce(vector, ForceMode2D.Impulse);
         angleSelector.gameObject.SetActive(false);

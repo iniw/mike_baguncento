@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private float _offsetH = 0.0f;
 
     public static Player Instance;
+    private static readonly int Dir = Animator.StringToHash("dir");
 
     private void Start()
     {
@@ -89,7 +90,17 @@ public class Player : MonoBehaviour
             newPosition.y = -_boundHeight;
         
         var animController = GetComponent<Animator>();
-        animController.SetInteger("dir", newPosition.y < transform.position.y ? 0 : 1);
+        if (newPosition.x > transform.position.x)
+            animController.SetInteger(Dir, 3);
+        else if (newPosition.x < transform.position.x)
+            animController.SetInteger(Dir, 2);
+        else if (newPosition.y > transform.position.y)
+            animController.SetInteger(Dir, 1);
+        else if (newPosition.y < transform.position.y)
+            animController.SetInteger(Dir, 4);
+        else
+            animController.SetInteger(Dir, 0);
+        
         transform.position = newPosition;
     }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a7a8d6e673befc548855f6cbaecf069
+guid: 04875b1c0f8158065b054f2e3ebca6d8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: front_0
+      name: Run.Side-MikeLittleMesses_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 19
+        x: 26
+        y: 24
         width: 161
         height: 176
       alignment: 0
@@ -124,18 +124,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4adcf7b37c6e34dcb97128707fde4b08
-      internalID: -1943892085
+      spriteID: 1cf1635514971642ea7c2fda04480913
+      internalID: -229004342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_1
+      name: Run.Side-MikeLittleMesses_1
       rect:
         serializedVersion: 2
-        x: 219
-        y: 19
+        x: 221
+        y: 24
         width: 161
         height: 176
       alignment: 0
@@ -145,18 +145,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a203654d11a4c791b649e08e88d517a
-      internalID: -1736082258
+      spriteID: 4ad5db4d30d993bfdbcfbc0c062dcc57
+      internalID: 1914805054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_2
+      name: Run.Side-MikeLittleMesses_2
       rect:
         serializedVersion: 2
-        x: 418
-        y: 19
+        x: 421
+        y: 24
         width: 161
         height: 176
       alignment: 0
@@ -166,18 +166,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 688fe3af592604842ad72528e041a8b8
-      internalID: 2116495383
+      spriteID: 001f2ab42fca44c739995f3ef1809b0f
+      internalID: -103632486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_3
+      name: Run.Side-MikeLittleMesses_3
       rect:
         serializedVersion: 2
-        x: 619
-        y: 19
+        x: 625
+        y: 24
         width: 161
         height: 176
       alignment: 0
@@ -187,8 +187,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1373d7681a9b26dc2847accd1f12b370
-      internalID: -829412953
+      spriteID: 9fdcfccaea7c5b5fa83e1cabd7df0028
+      internalID: -48739652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run.Side-MikeLittleMesses_4
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 24
+        width: 161
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8427056dd71ab0b901bceba69f5ab3
+      internalID: -1877019490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run.Side-MikeLittleMesses_5
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 24
+        width: 161
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a8359fea71c19fe9d87bf1ba94dcb0
+      internalID: -2099679376
       vertices: []
       indices: 
       edges: []
@@ -204,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      front_0: -1943892085
-      front_1: -1736082258
-      front_2: 2116495383
-      front_3: -829412953
+      Run.Side-MikeLittleMesses_0: -229004342
+      Run.Side-MikeLittleMesses_1: 1914805054
+      Run.Side-MikeLittleMesses_2: -103632486
+      Run.Side-MikeLittleMesses_3: -48739652
+      Run.Side-MikeLittleMesses_4: -1877019490
+      Run.Side-MikeLittleMesses_5: -2099679376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

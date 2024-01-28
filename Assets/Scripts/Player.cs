@@ -107,6 +107,9 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (Instance == null || this == null)
+            return;
+
         if (!other.CompareTag("Cars"))
             return;
 

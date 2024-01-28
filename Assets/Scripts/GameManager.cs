@@ -107,11 +107,18 @@ public class GameManager : MonoBehaviour
         }
 
         if (_cars)
+        {
             Destroy(_cars.gameObject);
+            _cars = null;
+        }
 
         if (balls != null && balls.Length > 0)
+        {
             foreach (var ball in balls)
-                Destroy(ball.gameObject);
+                if (ball)
+                    Destroy(ball.gameObject);
+            balls = null;
+        }
 
         Destroy(gameObject);
         Instance = null;

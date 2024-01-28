@@ -135,6 +135,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: score
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: groupedCarMoneyAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: handSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: handSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 023b8b3908c4eb621abfd1bab4f59609, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: handSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5dfde16cad150121a826696541cffdc8, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: handSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: d2a7f0cb7f2710c2f87c669cbadba2ab, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: handSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8403e1ba986170d8ba5c703b7364e79c, type: 3}
     - target: {fileID: 9037601805791412631, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8132164

@@ -1726,6 +1726,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: goal
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: money
       value: 0
       objectReference: {fileID: 0}

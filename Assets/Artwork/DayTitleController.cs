@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayTitleController : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class DayTitleController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("kjgfl");
-        var txt = GameObject.FindObjectOfType<TextMeshProUGUI>();
+        var txt = GameObject.Find("DayText").GetComponent<Text>();
         txt.text = $"MIKE LITTLE MESSES\nDAY: {GameManager.Instance.day}\nR$ {Math.Abs(GameManager.Instance.goal - GameManager.Instance.money)} REMAINING";
     }
 

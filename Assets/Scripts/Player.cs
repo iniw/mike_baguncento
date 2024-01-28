@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
@@ -36,9 +37,6 @@ public class Player : MonoBehaviour
         var spriteSize = spriteRenderer.sprite.bounds.size;
 
         input = new DynamicInput();
-
-        DontDestroyOnLoad(gameObject);
-
 
         input.Actions.LeftHandHorizontalMovement.performed += ctx => _moveHorizontal = ctx.ReadValue<float>();
         input.Actions.LeftHandHorizontalMovement.canceled += ctx => _moveHorizontal = 0.0f;

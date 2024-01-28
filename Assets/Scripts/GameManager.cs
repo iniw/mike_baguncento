@@ -105,7 +105,10 @@ public class GameManager : MonoBehaviour
                 Destroy(ball.gameObject);
 
         Destroy(gameObject);
+        Instance = null;
+
         Destroy(Player.Instance.gameObject);
+        Player.Instance = null;
     }
 
     private void Update()

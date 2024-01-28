@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public int day;
     public int score;
     public TrafficLightsState currentTrafficLight;
-    public List<Sprite> reactionSprites;
+    public List<RuntimeAnimatorController> reactionSprites;
     public int reactionIndex;
     public List<Sprite> trafficLightsUISprites;
     private CarMovement _cars;

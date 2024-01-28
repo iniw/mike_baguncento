@@ -12,7 +12,7 @@ public class GUIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public GameObject scoreBar;
     public Image trafficLightSprite;
-    public Image reactionSprite;
+    public Animator reactionSprite;
 
     private float Normalize(float value, float min, float max)
     {
@@ -30,7 +30,7 @@ public class GUIManager : MonoBehaviour
 
         scoreBar.transform.localScale = new Vector3(1, progress, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int)GameManager.Instance.currentTrafficLight];
-        reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
+        reactionSprite.runtimeAnimatorController = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
 
         if (moneyText != null)
             moneyText.text = $"$ {GameManager.Instance.money.ToString()} / {GameManager.Instance.goal.ToString()}";

@@ -164,9 +164,9 @@ RectTransform:
   m_LocalScale: {x: 1.01, y: 1.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1845930363247962409}
   - {fileID: 1994681905411110473}
   - {fileID: 7219077891238625176}
+  - {fileID: 3072448351155673417}
   m_Father: {fileID: 3442079093539560113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -647,7 +647,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3884834112830469611}
   m_CullTransparentMesh: 1
---- !u!1 &4891301979640250593
+--- !u!1 &4236925582049252729
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,23 +655,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1845930363247962409}
-  - component: {fileID: 6125167210409966889}
-  - component: {fileID: 9210918005675058733}
+  - component: {fileID: 3072448351155673417}
+  - component: {fileID: 8027204925070993553}
+  - component: {fileID: 5918349261572410204}
   m_Layer: 5
-  m_Name: Reaction
+  m_Name: MIKE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1845930363247962409
+--- !u!224 &3072448351155673417
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891301979640250593}
+  m_GameObject: {fileID: 4236925582049252729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -679,26 +679,26 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6216876446718680900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 384, y: 384}
+  m_SizeDelta: {x: 0, y: 384}
   m_Pivot: {x: 0.5, y: 0}
---- !u!222 &6125167210409966889
+--- !u!222 &8027204925070993553
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891301979640250593}
+  m_GameObject: {fileID: 4236925582049252729}
   m_CullTransparentMesh: 1
---- !u!114 &9210918005675058733
+--- !u!114 &5918349261572410204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891301979640250593}
+  m_GameObject: {fileID: 4236925582049252729}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2051007196, guid: fd24c1eabb014e041918db9fe6e16b07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -886,6 +886,7 @@ GameObject:
   - component: {fileID: 2232923509980515750}
   - component: {fileID: 2466561033460739267}
   - component: {fileID: 8194917442986163858}
+  - component: {fileID: 5575953494279837722}
   m_Layer: 5
   m_Name: GUITemplate
   m_TagString: Untagged
@@ -995,7 +996,28 @@ MonoBehaviour:
   scoreText: {fileID: 4740626923181600436}
   scoreBar: {fileID: 5264844879567641837}
   trafficLightSprite: {fileID: 8704934963387240410}
-  reactionSprite: {fileID: 9210918005675058733}
+  reactionSprite: {fileID: 0}
+--- !u!95 &5575953494279837722
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413497392868502456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60c72a910b3e2f0208b45cd798dc6368, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7113893959005785301
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
+using System;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
@@ -15,6 +17,7 @@ public class CarMovement : MonoBehaviour
     private float _cameraWidth = 0.0f;
 
     public GameObject dayTitleScreen;
+    private static readonly int Still = Animator.StringToHash("still");
 
     private void Awake()
     {
@@ -63,5 +66,14 @@ public class CarMovement : MonoBehaviour
     public void SetspeedMultiplier(float multiplier)
     {
         _speedMultiplier = multiplier;
+    }
+
+    private void Update()
+    {
+        var moving = Math.Abs(_transform.position.x - finalPosition.x) > 0.2f;
+        foreach (var anim in gameObject.GetComponentsInChildren<Animator>())
+        {
+            anim.SetInteger(Still, moving ? 0 : 1);
+        }
     }
 }

@@ -98,6 +98,15 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d73ff27-5fa1-4600-b6c2-041b55f99943"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -452,6 +461,28 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""action"": ""ExitMinigame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f7492ba-588d-4a62-83cd-89afafcafb94"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a7e18cb-4fa2-4bcc-aec2-5fd420b6fab3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -468,6 +499,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         m_Actions_RightHandAction = m_Actions.FindAction("RightHandAction", throwIfNotFound: true);
         m_Actions_TriggerMinigame = m_Actions.FindAction("TriggerMinigame", throwIfNotFound: true);
         m_Actions_ExitMinigame = m_Actions.FindAction("ExitMinigame", throwIfNotFound: true);
+        m_Actions_StartGame = m_Actions.FindAction("StartGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -537,6 +569,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_RightHandAction;
     private readonly InputAction m_Actions_TriggerMinigame;
     private readonly InputAction m_Actions_ExitMinigame;
+    private readonly InputAction m_Actions_StartGame;
     public struct ActionsActions
     {
         private @DynamicInput m_Wrapper;
@@ -549,6 +582,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         public InputAction @RightHandAction => m_Wrapper.m_Actions_RightHandAction;
         public InputAction @TriggerMinigame => m_Wrapper.m_Actions_TriggerMinigame;
         public InputAction @ExitMinigame => m_Wrapper.m_Actions_ExitMinigame;
+        public InputAction @StartGame => m_Wrapper.m_Actions_StartGame;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -582,6 +616,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @ExitMinigame.started += instance.OnExitMinigame;
             @ExitMinigame.performed += instance.OnExitMinigame;
             @ExitMinigame.canceled += instance.OnExitMinigame;
+            @StartGame.started += instance.OnStartGame;
+            @StartGame.performed += instance.OnStartGame;
+            @StartGame.canceled += instance.OnStartGame;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -610,6 +647,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @ExitMinigame.started -= instance.OnExitMinigame;
             @ExitMinigame.performed -= instance.OnExitMinigame;
             @ExitMinigame.canceled -= instance.OnExitMinigame;
+            @StartGame.started -= instance.OnStartGame;
+            @StartGame.performed -= instance.OnStartGame;
+            @StartGame.canceled -= instance.OnStartGame;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -637,5 +677,6 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         void OnRightHandAction(InputAction.CallbackContext context);
         void OnTriggerMinigame(InputAction.CallbackContext context);
         void OnExitMinigame(InputAction.CallbackContext context);
+        void OnStartGame(InputAction.CallbackContext context);
     }
 }

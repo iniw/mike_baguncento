@@ -106,7 +106,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        countdown -= Time.deltaTime;
+        if (SceneManager.GetActiveScene().name == "TopDown" || SceneManager.GetActiveScene().name == "Minigame")
+            countdown -= Time.deltaTime;
+
         if (countdown <= 0)
         {
             _lastTrafficLight = currentTrafficLight;

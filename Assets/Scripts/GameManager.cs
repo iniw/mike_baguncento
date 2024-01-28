@@ -55,14 +55,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
         var sceneCar = GameObject.FindGameObjectWithTag("Cars").GetComponent<CarMovement>();
-        
+
         if (_cars == null && sceneCar != null)
             _cars = sceneCar;
         else
             Destroy(sceneCar);
-        
+
         var isMinigame = SceneManager.GetActiveScene().name == "Minigame";
         foreach (var sprite in _cars.GetComponentsInChildren<SpriteRenderer>())
         {
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(_cars);
-        
+
         SceneManager.sceneLoaded += LoadState;
     }
 
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         countdown = float.Parse(data[5]);
         reactionIndex = int.Parse(data[6]);
     }
-    
+
     private void Update()
     {
         countdown -= Time.deltaTime;
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         }
 
         SaveState();
-        
+
         if (_cars == null) return;
 
         _cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         spawnedBalls++;
         playableBalls++;
     }
-    
+
     public void StartGame()
     {
         SceneManager.LoadScene("TopDown");

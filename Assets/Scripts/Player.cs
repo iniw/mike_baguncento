@@ -35,12 +35,10 @@ public class Player : MonoBehaviour
         var spriteSize = spriteRenderer.sprite.bounds.size;
 
         input = new DynamicInput();
-        input.Enable();
-        
+
         DontDestroyOnLoad(gameObject);
 
-        GetComponent<SpriteRenderer>().enabled = true;
-        
+
         input.Actions.LeftHandHorizontalMovement.performed += ctx => _moveHorizontal = ctx.ReadValue<float>();
         input.Actions.LeftHandHorizontalMovement.canceled += ctx => _moveHorizontal = 0.0f;
 
@@ -55,6 +53,24 @@ public class Player : MonoBehaviour
         // Convert pixel offsets to world units
         _offsetW = 384f / (Screen.height / (2 * cameraSize));
         _offsetH = 80f / (Screen.height / (2 * cameraSize));
+
+        LoadState(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        SceneManager.sceneLoaded += LoadState;
+    }
+
+    private void LoadState(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "TopDown")
+        {
+            input.Enable();
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        if (scene.name == "Minigame")
+        {
+            input.Disable();
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     private void Update()

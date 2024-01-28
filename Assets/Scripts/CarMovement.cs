@@ -50,6 +50,8 @@ public class CarMovement : MonoBehaviour
             Instantiate(dayTitleScreen, new Vector3(0, 0, 0), Quaternion.identity);
 
             GameManager.Instance.day++;
+            GameManager.Instance.ballsThrowMultiplier += 0.3f;
+
             GameManager.Instance.currentTrafficLight = TrafficLightsState.Green;
             GameManager.Instance.countdown = GameManager.Instance.greenLightDuration;
             return false;

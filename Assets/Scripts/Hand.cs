@@ -40,8 +40,9 @@ public class Hand : MonoBehaviour
         verticalMovement.performed += ctx => _moveVertical = ctx.ReadValue<float>();
         verticalMovement.canceled += ctx => _moveVertical = 0.0f;
 
-        _input.Actions.TriggerMinigame.performed += ctx =>
+        _input.Actions.ExitMinigame.performed += ctx =>
         {
+            _input.Disable();
             GameManager.Instance.canProceed = true;
             SceneManager.LoadScene("TopDown");
         };

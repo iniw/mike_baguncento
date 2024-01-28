@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitMinigame",
+                    "type": "Button",
+                    "id": "48ee0bee-9e37-4978-9cb4-d19d5c8ab519",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -380,17 +389,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f86b0f6d-2a28-4180-a837-be7038384bb8",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TriggerMinigame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0bca2465-a30a-472a-92b7-7b484bda637e",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -408,6 +406,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "TriggerMinigame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "953b42a0-8d8a-4d7e-adee-59c1d5105a7f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitMinigame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95a14892-8b26-443e-9031-266d40008882",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitMinigame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

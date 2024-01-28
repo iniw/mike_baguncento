@@ -89,6 +89,15 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitMinigame"",
+                    ""type"": ""Button"",
+                    ""id"": ""48ee0bee-9e37-4978-9cb4-d19d5c8ab519"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -402,17 +411,6 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f86b0f6d-2a28-4180-a837-be7038384bb8"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TriggerMinigame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0bca2465-a30a-472a-92b7-7b484bda637e"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -432,6 +430,28 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                     ""action"": ""TriggerMinigame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""953b42a0-8d8a-4d7e-adee-59c1d5105a7f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95a14892-8b26-443e-9031-266d40008882"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -447,6 +467,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         m_Actions_LeftHandAction = m_Actions.FindAction("LeftHandAction", throwIfNotFound: true);
         m_Actions_RightHandAction = m_Actions.FindAction("RightHandAction", throwIfNotFound: true);
         m_Actions_TriggerMinigame = m_Actions.FindAction("TriggerMinigame", throwIfNotFound: true);
+        m_Actions_ExitMinigame = m_Actions.FindAction("ExitMinigame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -515,6 +536,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Actions_LeftHandAction;
     private readonly InputAction m_Actions_RightHandAction;
     private readonly InputAction m_Actions_TriggerMinigame;
+    private readonly InputAction m_Actions_ExitMinigame;
     public struct ActionsActions
     {
         private @DynamicInput m_Wrapper;
@@ -526,6 +548,7 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         public InputAction @LeftHandAction => m_Wrapper.m_Actions_LeftHandAction;
         public InputAction @RightHandAction => m_Wrapper.m_Actions_RightHandAction;
         public InputAction @TriggerMinigame => m_Wrapper.m_Actions_TriggerMinigame;
+        public InputAction @ExitMinigame => m_Wrapper.m_Actions_ExitMinigame;
         public InputActionMap Get() { return m_Wrapper.m_Actions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -556,6 +579,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @TriggerMinigame.started += instance.OnTriggerMinigame;
             @TriggerMinigame.performed += instance.OnTriggerMinigame;
             @TriggerMinigame.canceled += instance.OnTriggerMinigame;
+            @ExitMinigame.started += instance.OnExitMinigame;
+            @ExitMinigame.performed += instance.OnExitMinigame;
+            @ExitMinigame.canceled += instance.OnExitMinigame;
         }
 
         private void UnregisterCallbacks(IActionsActions instance)
@@ -581,6 +607,9 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
             @TriggerMinigame.started -= instance.OnTriggerMinigame;
             @TriggerMinigame.performed -= instance.OnTriggerMinigame;
             @TriggerMinigame.canceled -= instance.OnTriggerMinigame;
+            @ExitMinigame.started -= instance.OnExitMinigame;
+            @ExitMinigame.performed -= instance.OnExitMinigame;
+            @ExitMinigame.canceled -= instance.OnExitMinigame;
         }
 
         public void RemoveCallbacks(IActionsActions instance)
@@ -607,5 +636,6 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
         void OnLeftHandAction(InputAction.CallbackContext context);
         void OnRightHandAction(InputAction.CallbackContext context);
         void OnTriggerMinigame(InputAction.CallbackContext context);
+        void OnExitMinigame(InputAction.CallbackContext context);
     }
 }

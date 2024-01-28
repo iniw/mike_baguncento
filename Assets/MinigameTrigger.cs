@@ -15,6 +15,7 @@ public class MinigameTrigger : MonoBehaviour
     {
         _input.Actions.TriggerMinigame.performed += ctx =>
         {
+            _input.Disable();
             SceneManager.LoadScene("Minigame");
         };
     }

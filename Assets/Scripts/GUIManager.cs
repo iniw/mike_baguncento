@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +14,21 @@ public class GUIManager : MonoBehaviour
     public Image trafficLightSprite;
     public Image reactionSprite;
 
+    private float Normalize(float value, float min, float max)
+    {
+        return (value - min) / (max - min);
+    }
+
     private void Update()
     {
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
         countdownText.gameObject.SetActive(GameManager.Instance.currentTrafficLight == TrafficLightsState.Red);
         scoreText.text = GameManager.Instance.score.ToString();
-        scoreBar.transform.localScale = new Vector3(1, GameManager.Instance.score / 200f, 1);
+
+        var norm = Normalize(GameManager.Instance.score, 0, GameManager.Instance.goal);
+        var progress = Mathf.Lerp(0f, 2.5f, norm);
+
+        scoreBar.transform.localScale = new Vector3(1, progress, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int)GameManager.Instance.currentTrafficLight];
         reactionSprite.sprite = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
 

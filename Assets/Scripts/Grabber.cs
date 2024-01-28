@@ -47,6 +47,7 @@ public class Grabber : MonoBehaviour
         };
     }
 
+
     void LateUpdate()
     {
         if (_state == State.BallGrabbed)
@@ -59,13 +60,13 @@ public class Grabber : MonoBehaviour
         Vector2 ourPos = transform.position;
 
         var delta = pos - ourPos;
-        var score = Mathf.RoundToInt(delta.magnitude * 1.5f) * GameManager.Instance.playableBalls;
+        var score = Mathf.RoundToInt(delta.magnitude * GameManager.Instance.ballsThrowMultiplier) * GameManager.Instance.playableBalls;
 
         GameManager.Instance.score += score;
 
         _ballInArea.transform.position = hand.transform.position;
         _ballInArea.constraints = RigidbodyConstraints2D.FreezeAll;
-        
+
         var ballIdx = int.Parse(_ballInArea.gameObject.name[^1].ToString());
         gameObject.GetComponentInParent<SpriteRenderer>().sprite = GameManager.Instance.handSprites[ballIdx];
         _ballInArea.GetComponent<SpriteRenderer>().enabled = false;
@@ -89,7 +90,7 @@ public class Grabber : MonoBehaviour
 
         _ballInArea.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponentInParent<SpriteRenderer>().sprite = GameManager.Instance.handSprites[^1];
-        
+
         var vector = (hand.side == HandSide.Left ? angleSelector.transform.right : -angleSelector.transform.right) * FORCE_MAGNITUDE;
         _ballInArea.AddForce(vector, ForceMode2D.Impulse);
         angleSelector.gameObject.SetActive(false);

@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     public Sprite win_sprite;
     public Sprite lose_sprite;
 
+    public float ballsLinearDrag = 1f;
+    public float ballsThrowMultiplier = 1.5f;
+
     private void Start()
     {
         if (Instance == null)
@@ -155,6 +158,8 @@ public class GameManager : MonoBehaviour
     public void SpawnBall()
     {
         balls[spawnedBalls].gameObject.SetActive(true);
+        balls[spawnedBalls].GetComponent<Rigidbody2D>().drag = ballsLinearDrag;
+
         spawnedBalls++;
         playableBalls++;
     }

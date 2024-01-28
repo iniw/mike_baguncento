@@ -442,6 +442,17 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a295b315-6df7-49d4-beff-9b6d893d98a9"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""953b42a0-8d8a-4d7e-adee-59c1d5105a7f"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -464,6 +475,28 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""21eb4337-722c-46d6-8c16-431ea9a9151a"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b408e9bc-5c56-498d-ab0d-d9007b416f96"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitMinigame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4f7492ba-588d-4a62-83cd-89afafcafb94"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -476,7 +509,18 @@ public partial class @DynamicInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5a7e18cb-4fa2-4bcc-aec2-5fd420b6fab3"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecfa482a-42cd-4dbd-b214-cc6b54cf4a9e"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -39,7 +39,7 @@ public class Hand : MonoBehaviour
         horizontalMovement.canceled += ctx => _moveHorizontal = 0.0f;
         verticalMovement.performed += ctx => _moveVertical = ctx.ReadValue<float>();
         verticalMovement.canceled += ctx => _moveVertical = 0.0f;
-        
+
         _input.Actions.TriggerMinigame.performed += ctx =>
         {
             GameManager.Instance.canProceed = true;

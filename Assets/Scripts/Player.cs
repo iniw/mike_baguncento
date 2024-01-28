@@ -65,8 +65,7 @@ public class Player : MonoBehaviour
             input.Enable();
             GetComponent<SpriteRenderer>().enabled = true;
         }
-
-        if (scene.name == "Minigame")
+        else
         {
             input.Disable();
             GetComponent<SpriteRenderer>().enabled = false;

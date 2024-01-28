@@ -20,7 +20,7 @@ public enum TrafficLightsState
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance = null;
 
     public int money;
     public int goal;
@@ -52,50 +52,58 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            if (SceneManager.GetActiveScene().name == "Minigame")
-                InitBalls();
+            DontDestroyOnLoad(this);
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
 
-        var sceneCar = GameObject.FindGameObjectWithTag("Cars").GetComponent<CarMovement>();
-
-        if (_cars == null && sceneCar != null)
-            _cars = sceneCar;
-        else
-            Destroy(sceneCar);
-
-        var isMinigame = SceneManager.GetActiveScene().name == "Minigame";
-        foreach (var sprite in _cars.GetComponentsInChildren<SpriteRenderer>())
-        {
-            sprite.enabled = !isMinigame;
-        }
-
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_cars);
-
+        LoadState(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         SceneManager.sceneLoaded += LoadState;
-    }
-
-    public void SaveState()
-    {
-        var s = "";
-        s += $"{money}|{day}|{score}|{groupedCarMoneyAmount}|{currentTrafficLight.GetHashCode()}|{countdown}|{reactionIndex}";
-        PlayerPrefs.SetString("SaveState", s);
     }
 
     private void LoadState(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Minigame")
             InitBalls();
+
+        if (scene.name == "End")
+        {
+            if (score >= goal)
+                GameObject.Find("EndText").GetComponent<UnityEngine.UI.Text>().text = "ganhou oh yes";
+            else
+                GameObject.Find("EndText").GetComponent<UnityEngine.UI.Text>().text = "perdeu...";
+        }
+
+        if (scene.name == "TopDown")
+        {
+            if (score <= 0)
+                GameObject.Find("GoldBag").SetActive(false);
+
+            if (_cars)
+            {
+                foreach (var car in GameObject.FindGameObjectsWithTag("Cars"))
+                    if (car != _cars.gameObject)
+                        Destroy(car);
+            }
+            else
+            {
+                _cars = GameObject.FindGameObjectWithTag("Cars").GetComponent<CarMovement>();
+                DontDestroyOnLoad(_cars.gameObject);
+            }
+        }
+
+        if (_cars)
+            foreach (var sprite in _cars.GetComponentsInChildren<SpriteRenderer>())
+                sprite.enabled = scene.name == "TopDown";
     }
+
 
     private void Update()
     {
         countdown -= Time.deltaTime;
-
         if (countdown <= 0)
         {
             _lastTrafficLight = currentTrafficLight;
@@ -104,8 +112,9 @@ public class GameManager : MonoBehaviour
                 case TrafficLightsState.Green:
                     currentTrafficLight = TrafficLightsState.Yellow;
                     countdown = yellowLightDuration;
-                    if (_cars.transform.position.x >= 0)
-                        moveTillNext = true;
+                    if (_cars)
+                        if (_cars.transform.position.x >= 0)
+                            moveTillNext = true;
                     break;
                 case TrafficLightsState.Yellow:
                     currentTrafficLight = TrafficLightsState.Red;
@@ -118,9 +127,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        SaveState();
-
-        if (_cars == null) return;
+        if (_cars == null)
+            return;
 
         _cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
 

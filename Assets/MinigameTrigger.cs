@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MinigameTrigger : MonoBehaviour
 {
     private DynamicInput _input;
-    
+
     private void Start()
     {
         _input = new DynamicInput();
@@ -15,10 +15,7 @@ public class MinigameTrigger : MonoBehaviour
     {
         _input.Actions.TriggerMinigame.performed += ctx =>
         {
-            GameManager.Instance.SaveState();
             SceneManager.LoadScene("Minigame");
-            Player.Instance.input.Disable();
-            Player.Instance.GetComponent<SpriteRenderer>().enabled = false; 
         };
     }
 }

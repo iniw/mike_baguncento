@@ -51,7 +51,6 @@ public class Grabber : MonoBehaviour
     {
         if (_state == State.BallGrabbed)
             _ballInArea.transform.position = hand.transform.position;
-
     }
 
     private void GrabBall()
@@ -77,6 +76,12 @@ public class Grabber : MonoBehaviour
 
     private void ThrowBall()
     {
+        if (!_ballInArea)
+        {
+            _state = State.Idle;
+            return;
+        }
+
         if (GameManager.Instance.spawnedBalls < GameManager.Instance.balls.Length)
             GameManager.Instance.SpawnBall();
 
@@ -101,7 +106,7 @@ public class Grabber : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (_state == State.BallInArea && _ballInArea == collider)
+        if (_state == State.BallInArea && _ballInArea.gameObject == collider.gameObject)
         {
             _state = State.Idle;
             _ballInArea = null;

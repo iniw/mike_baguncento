@@ -1,4 +1,7 @@
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class CarMovement : MonoBehaviour
 {
@@ -23,11 +26,22 @@ public class CarMovement : MonoBehaviour
         MoveTowards(finalPosition);
     }
 
-    public void LeaveScene()
+    public bool LeaveScene()
     {
         var outside = new Vector2(_transform.position.x + _cameraWidth, _transform.position.y);
-        if (_transform.position.x >= _cameraWidth) ResetPosition();
-        else MoveTowards(outside);
+        if (_transform.position.x >= _cameraWidth)
+        {
+            ResetPosition();
+            if (!GameManager.Instance.canProceed) return false;
+            GameManager.Instance.canProceed = false;
+            GameManager.Instance.day++;
+            GameManager.Instance.currentTrafficLight = TrafficLightsState.Green;
+            GameManager.Instance.countdown = GameManager.Instance.greenLightDuration;
+            GameManager.Instance.SaveState();
+            return false;
+        }
+        MoveTowards(outside);
+        return true;
     }
     
     private void MoveTowards(Vector2 target)

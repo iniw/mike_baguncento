@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     public int spawnedBalls = 0;
     public Rigidbody2D[] balls;
 
+    public bool canProceed = false;
+    public bool moveTillNext = false;
+
     private void Start()
     {
         if (Instance == null)
@@ -86,17 +89,6 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Minigame")
             InitBalls();
-
-        if (!PlayerPrefs.HasKey("SaveState")) return;
-
-        var data = PlayerPrefs.GetString("SaveState").Split('|');
-        money = int.Parse(data[0]);
-        day = int.Parse(data[1]);
-        score = int.Parse(data[2]);
-        groupedCarMoneyAmount = float.Parse(data[3]);
-        currentTrafficLight = (TrafficLightsState)int.Parse(data[4]);
-        countdown = float.Parse(data[5]);
-        reactionIndex = int.Parse(data[6]);
     }
 
     private void Update()
@@ -111,6 +103,8 @@ public class GameManager : MonoBehaviour
                 case TrafficLightsState.Green:
                     currentTrafficLight = TrafficLightsState.Yellow;
                     countdown = yellowLightDuration;
+                    if (_cars.transform.position.x >= 0)
+                        moveTillNext = true;
                     break;
                 case TrafficLightsState.Yellow:
                     currentTrafficLight = TrafficLightsState.Red;
@@ -129,11 +123,12 @@ public class GameManager : MonoBehaviour
 
         _cars.SetspeedMultiplier(currentTrafficLight != TrafficLightsState.Green ? 0.4f : 1.0f);
 
-        if (_lastTrafficLight == TrafficLightsState.Red)
+        if (_lastTrafficLight == TrafficLightsState.Red || moveTillNext)
         {
-            _cars.LeaveScene();
+            moveTillNext = _cars.LeaveScene();
             return;
         }
+
         _cars.MoveToFinalPosition();
     }
 

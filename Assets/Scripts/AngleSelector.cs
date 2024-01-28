@@ -1,12 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.EditorTools;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.InputSystem;
-using UnityEngine.XR;
 
 public class AngleSelector : MonoBehaviour
 {

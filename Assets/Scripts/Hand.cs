@@ -43,7 +43,6 @@ public class Hand : MonoBehaviour
         _input.Actions.TriggerMinigame.performed += ctx =>
         {
             GameManager.Instance.canProceed = true;
-            GameManager.Instance.SaveState();
             SceneManager.LoadScene("TopDown");
         };
     }

@@ -20,10 +20,7 @@ public class DeathZone : MonoBehaviour
             else
             {
                 if (GameManager.Instance.playableBalls == 0)
-                {
-                    GameManager.Instance.canProceed = true;
                     SceneManager.LoadScene("TopDown");
-                }
             }
         }
     }

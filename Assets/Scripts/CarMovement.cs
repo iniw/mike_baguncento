@@ -13,6 +13,8 @@ public class CarMovement : MonoBehaviour
     
     private float _speedMultiplier = 1.0f;
     private float _cameraWidth = 0.0f;
+
+    public GameObject dayTitleScreen;
     
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class CarMovement : MonoBehaviour
             ResetPosition();
             if (!GameManager.Instance.canProceed) return false;
             GameManager.Instance.canProceed = false;
+            Instantiate(dayTitleScreen, new Vector3(0, 0, 0), Quaternion.identity);
             GameManager.Instance.day++;
             GameManager.Instance.currentTrafficLight = TrafficLightsState.Green;
             GameManager.Instance.countdown = GameManager.Instance.greenLightDuration;

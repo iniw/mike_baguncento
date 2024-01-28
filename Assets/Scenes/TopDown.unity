@@ -1708,6 +1708,18 @@ PrefabInstance:
       propertyPath: handSprites.Array.data[3]
       value: 
       objectReference: {fileID: 21300000, guid: 8403e1ba986170d8ba5c703b7364e79c, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: reactionSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: reactionSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: 7aa526cfaac0fdb2992fefd76029b79c, type: 2}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: reactionSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 9100000, guid: 60c72a910b3e2f0208b45cd798dc6368, type: 2}
     - target: {fileID: 9037601805791412631, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.626433

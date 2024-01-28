@@ -30,7 +30,7 @@ public class GUIManager : MonoBehaviour
 
         scoreBar.transform.localScale = new Vector3(1, progress, 1);
         trafficLightSprite.sprite = GameManager.Instance.trafficLightsUISprites[(int)GameManager.Instance.currentTrafficLight];
-        reactionSprite.runtimeAnimatorController = GameManager.Instance.reactionSprites[GameManager.Instance.reactionIndex];
+        reactionSprite.runtimeAnimatorController = GameManager.Instance.reactionSprites[GameManager.Instance.day - 1];
 
         if (moneyText != null)
             moneyText.text = $"$ {GameManager.Instance.money.ToString()} / {GameManager.Instance.goal.ToString()}";

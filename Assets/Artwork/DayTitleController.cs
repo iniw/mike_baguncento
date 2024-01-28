@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +9,8 @@ public class DayTitleController : MonoBehaviour
     private void Start()
     {
         var txt = GameObject.Find("DayText").GetComponent<Text>();
-        txt.text = $"MIKE LITTLE MESSES\nDAY: {GameManager.Instance.day}\nR$ {Math.Abs(GameManager.Instance.goal - GameManager.Instance.money)} REMAINING";
+        var moneyRemaining = GameManager.Instance.goal - GameManager.Instance.money;
+        txt.text = $"MIKE LITTLE MESSES\nDAY: {GameManager.Instance.day}\nR$ {Math.Abs(moneyRemaining < 0 ? 0 : moneyRemaining)} REMAINING";
     }
 
     private void Update()

@@ -23,10 +23,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     public int money;
-    public int goal;
+    public float goal;
     public int day;
     public int score;
-    public float groupedCarMoneyAmount;
     public TrafficLightsState currentTrafficLight;
     public List<Sprite> reactionSprites;
     public int reactionIndex;
@@ -161,6 +160,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        currentTrafficLight = TrafficLightsState.Green;
+        countdown = greenLightDuration;
+        day = 1;
+        score = 0;
+        money = 0;
         SceneManager.LoadScene("TopDown");
     }
 }

@@ -87,7 +87,9 @@ public class Player : MonoBehaviour
             newPosition.y = _boundHeight - _offsetH;
         else if (newPosition.y <= -_boundHeight)
             newPosition.y = -_boundHeight;
-
+        
+        var animController = GetComponent<Animator>();
+        animController.SetInteger("dir", newPosition.y < transform.position.y ? 0 : 1);
         transform.position = newPosition;
     }
 

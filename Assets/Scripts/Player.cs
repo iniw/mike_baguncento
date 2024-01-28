@@ -59,6 +59,9 @@ public class Player : MonoBehaviour
 
     private void LoadState(Scene scene, LoadSceneMode mode)
     {
+        if (Instance == null || this == null)
+            return;
+
         if (scene.name == "TopDown")
         {
             input.Enable();

@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
 
     private void LoadState(Scene scene, LoadSceneMode mode)
     {
+        if (Instance == null || this == null)
+            return;
+
         if (scene.name == "Minigame")
             InitBalls();
 
@@ -97,6 +100,9 @@ public class GameManager : MonoBehaviour
 
     public void Destroy()
     {
+        Destroy(Player.Instance.gameObject);
+        Player.Instance = null;
+
         if (_cars)
             Destroy(_cars.gameObject);
 
@@ -106,9 +112,6 @@ public class GameManager : MonoBehaviour
 
         Destroy(gameObject);
         Instance = null;
-
-        Destroy(Player.Instance.gameObject);
-        Player.Instance = null;
     }
 
     private void Update()

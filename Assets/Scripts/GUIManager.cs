@@ -21,6 +21,9 @@ public class GUIManager : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance)
+            return;
+
         countdownText.text = GameManager.Instance.countdown.ToString("F0");
         countdownText.gameObject.SetActive(GameManager.Instance.currentTrafficLight == TrafficLightsState.Red);
         scoreText.text = GameManager.Instance.score.ToString();

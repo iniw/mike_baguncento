@@ -41,7 +41,14 @@ public class CarMovement : MonoBehaviour
                 return false;
 
             GameManager.Instance.canProceed = false;
+            if (GameManager.Instance.day >= 3)
+            {
+                SceneManager.LoadScene("End");
+                return false;
+            }
+
             Instantiate(dayTitleScreen, new Vector3(0, 0, 0), Quaternion.identity);
+
             GameManager.Instance.day++;
             GameManager.Instance.currentTrafficLight = TrafficLightsState.Green;
             GameManager.Instance.countdown = GameManager.Instance.greenLightDuration;

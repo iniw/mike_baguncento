@@ -144,6 +144,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: win_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 920b9406a0b2a425fb211c6effce6bd2, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
+      propertyPath: lose_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a31d6bbf11f8533f7801ea114211fab1, type: 3}
+    - target: {fileID: 8298290795669999233, guid: c3cdcaf7c1e846aeb90953d0c09c3a1c, type: 3}
       propertyPath: groupedCarMoneyAmount
       value: 0
       objectReference: {fileID: 0}

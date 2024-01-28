@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
     public bool canProceed = false;
     public bool moveTillNext = false;
 
+    public Sprite win_sprite;
+    public Sprite lose_sprite;
+
     private void Start()
     {
         if (Instance == null)
@@ -70,10 +73,8 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "End")
         {
-            if (score >= goal)
-                GameObject.Find("EndText").GetComponent<UnityEngine.UI.Text>().text = "ganhou oh yes";
-            else
-                GameObject.Find("EndText").GetComponent<UnityEngine.UI.Text>().text = "perdeu...";
+            var background = GameObject.Find("Background").GetComponent<SpriteRenderer>();
+            background.sprite = money >= goal ? win_sprite : lose_sprite;
         }
 
         if (scene.name == "TopDown")
